@@ -1,13 +1,6 @@
 # %%
-from math import sin
-from math import pi
+
 import numpy as np
-from numpy import arange
-from numpy import vstack
-from numpy import argmax, argmin
-from numpy import asarray
-from numpy.random import normal
-from numpy.random import random
 from scipy.stats import norm
 from sklearn.gaussian_process import GaussianProcessRegressor
 from warnings import catch_warnings
@@ -17,10 +10,8 @@ from SetKernel import SetKernel
 import itertools
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
-import matplotlib.mlab as mlab
-from mpl_toolkits.mplot3d import Axes3D
 import os
-# %matplotlib inline
+
 # %%
 
 ###############################
@@ -85,7 +76,7 @@ def opt_acquisition(X, y, model, X_total, y_total):
     scores = acquisition(X, Xsamples, model)
 
     # locate the index of the largest scores
-    ix = argmax(scores)
+    ix = np.argmax(scores)
     
     ret_val = Xsamples[ix,:].reshape(1,2)
 
@@ -238,8 +229,8 @@ for i in range(1, 100):
     print('>x=',x,', f()=%3f, actual=%.3f' % (est, actual))
     
     # add the data to the dataset
-    X_gp = vstack((X_gp, x))
-    y_gp = vstack((y_gp, [[actual]]))
+    X_gp = np.vstack((X_gp, x))
+    y_gp = np.vstack((y_gp, [[actual]]))
     
     # update the model
     model.fit(X_gp, y_gp)
@@ -249,7 +240,7 @@ for i in range(1, 100):
 
 
 # output function optima
-ix = argmax(y_gp)
+ix = np.argmax(y_gp)
 print('Best Result: x=',X_gp[ix],' y=',y_gp[ix])
 
 # %%
