@@ -1,6 +1,11 @@
 # Bayesian-Optimization-on-Sets
 
-## Instructions to run 
+## Dependencies and instructions
+1. scikit-learn
+2. matplotlib
+3. numpy 
+4. scipy 
+
 ```python 
 python Bayes_opt.py
 ```
